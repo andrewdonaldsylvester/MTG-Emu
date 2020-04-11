@@ -1,8 +1,7 @@
-import aiohttp
 import asyncio
-import async_timeout
-from aiohttp import ClientSession
 import re
+
+from aiohttp import ClientSession
 
 ALL_CARDS = "https://www.mtgjson.com/files/AllCards.json"
 ALL_PRICES = "https://www.mtgjson.com/files/AllPrices.json"
@@ -31,6 +30,108 @@ keyword_abilities = [
     "Reach",
     "Trample",
     "Vigilance",
+    "Absorb",
+    "Affinity",
+    "Amplify",
+    "Annihilator",
+    "Aura Swap",
+    "Awaken",
+    "Banding",
+    "Battle Cry",
+    "Bestow",
+    "Bloodthirst",
+    "Bushido",
+    "Buyback",
+    "Cascade",
+    "Champion",
+    "Changeling",
+    "Cipher",
+    "Conspire",
+    "Convoke",
+    "Cumulative Upkeep",
+    "Cycling",
+    "Dash",
+    "Delve",
+    "Dethrone",
+    "Devoid",
+    "Devour",
+    "Dredge",
+    "Echo",
+    "Entwine",
+    "Epic",
+    "Evoke",
+    "Evolve",
+    "Exalted",
+    "Exploit",
+    "Extort",
+    "Fading",
+    "Fear",
+    "Flanking",
+    "Flashback",
+    "Forecast",
+    "Fortify",
+    "Frenzy",
+    "Fuse",
+    "Graft",
+    "Gravestorm",
+    "Haunt",
+    "Hidden Agenda",
+    "Hideaway",
+    "Horsemanship",
+    "Infect",
+    "Ingest",
+    "Intimidate",
+    "Kicker",
+    "Landhome",
+    "Landwalk",
+    "Level Up",
+    "Living Weapon",
+    "Madness",
+    "Megamorph",
+    "Miracle",
+    "Modular",
+    "Morph",
+    "Myriad",
+    "Ninjutsu",
+    "Offering",
+    "Outlast",
+    "Overload",
+    "Persist",
+    "Phasing",
+    "Poisonous",
+    "Protection",
+    "Provoke",
+    "Prowl",
+    "Rampage",
+    "Rebound",
+    "Recover",
+    "Reinforce",
+    "Renown",
+    "Replicate",
+    "Retrace",
+    "Ripple",
+    "Scavenge",
+    "Skulk",
+    "Shadow",
+    "Shroud",
+    "Soulbond",
+    "Soulshift",
+    "Splice",
+    "Split Second",
+    "Storm",
+    "Substance",
+    "Sunburst",
+    "Surge",
+    "Suspend",
+    "Totem Armor",
+    "Transfigure",
+    "Transmute",
+    "Tribute",
+    "Undying",
+    "Unearth",
+    "Unleash",
+    "Vanishing",
+    "Wither",
 ]
 
 
@@ -38,7 +139,7 @@ def xstr(s):
     if s is None or s == []:
         return ""
     else:
-        return " ".join(s)
+        return ",".join(s)
 
 
 def afetch(data_set, url):
@@ -54,35 +155,39 @@ async def fetch(data_set, url):
 
 
 def find_ability(line):
-    found_abilities = []
     found_ability = None
     matches = re.search(r"^\s*[,]*\s*([a-zA-Z]+)", line)
     if matches is None:
-        match = re.search(r"^([a-zA-Z]+ [sS]trike)", line)
+        matches = re.search(r"^([a-zA-Z]+ [sS]trike)", line)
     if matches is not None:
         match = matches.group(1).upper()
         if match in map(str.upper, keyword_abilities):
             found_ability = match
-    found_abilities.append(found_ability)
+        else:
+            matches = re.search(r"^([a-zA-Z]+ [sS]trike)", line)
+        if matches is not None:
+            match = matches.group(1).upper()
+            if match in map(str.upper, keyword_abilities):
+                found_ability = match
     if found_ability is not None:
-        found_ability = find_ability(line[len(found_ability) :])
-
-    return found_abilities
+        yield found_ability
+        for ability in find_ability(line[len(found_ability) :]):
+            yield ability
 
 
 def find_abilities(text):
     found_abilities = []
     for line in text.split("\n"):
-        abilities = find_ability(line)
-        found_abilities.append(abilities)
+        for ability in find_ability(line):
+            found_abilities.append(ability)
     return found_abilities
 
 
 loop = asyncio.get_event_loop()
 tasks = []
 data = {}
-# print("Fetching ALL CARDS from {} ...".format(ALL_CARDS))
-# tasks.append(afetch("all_cards", ALL_CARDS))
+print("Fetching ALL CARDS from {} ...".format(ALL_CARDS))
+tasks.append(afetch("all_cards", ALL_CARDS))
 # print("Fetching ALL PRICES from {} ...".format(ALL_PRICES))
 # tasks.append(afetch("all_prices", ALL_PRICES))
 print("Fetching CARD TYPES from {} ...".format(CARD_TYPES))
@@ -102,32 +207,14 @@ loop.run_until_complete(asyncio.wait(tasks))
 print("Done!")
 print("Wait!")
 m20_set = data["m20_set"]
+all_cards = data["all_cards"]
+
 i = 1
-for card in m20_set["cards"]:
+for card_name in all_cards:
+    card = all_cards[card_name]
     if "Creature" in card["types"]:
-        # print(
-        #     "#{:03d} {:40s} Type: {:40s} Types: {:40s} Text: {}".format(
-        #         i,
-        #         card["name"],
-        #         card["type"],
-        #         str(card["types"]),
-        #         card["text"].replace(" \n ", "") if "text" in card else "",
-        #     )
-        # )
-        # print(card["text"] if "text" in card else "")
         text = card["text"].replace("\n", " \\n ") if "text" in card else ""
         abilities = find_abilities(card["text"] if "text" in card else "")
         ability_string = xstr(abilities)
-        print("{:30s} {:30s} Text: {}".format(card["name"], ability_string, text))
-
-    i += 1
-
-#
-# for card in m20_set["cards"]:
-#     if "Creature" in card["types"]:
-#         if "text" in card:
-#             # print(card["text"].replace("\n", " \\n "))
-#             abilities = parse_abilities(card["text"])
-#             print(
-#                 "{:30s} {:40s} Text: {}".format(card["name"], abilities, card["text"],)
-#             )
+        print("{:03d} {:30s} {:30s} {}".format(i, card["name"], ability_string, text))
+        i += 1
