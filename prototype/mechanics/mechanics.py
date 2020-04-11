@@ -154,6 +154,16 @@ async def fetch(data_set, url):
             print("Got {}".format(url))
 
 
+def find_activated_ability(line):
+    matches = re.search(r"^(\{[a-zA-Z0-9]\}[, ]*)+", line)
+    if matches is not None:
+        activation = matches.group(0).upper()
+        ability = line[len(activation) :]
+        if activation is not None:
+            return re.sub(r"[, ]", "", activation), re.sub(r"^: ", "", ability)
+    return None, None
+
+
 def find_ability(line):
     found_ability = None
     matches = re.search(r"^\s*[,]*\s*([a-zA-Z]+)", line)
@@ -209,12 +219,34 @@ print("Wait!")
 m20_set = data["m20_set"]
 all_cards = data["all_cards"]
 
+print()
+print()
+print("Keyword Abilities")
 i = 1
-for card_name in all_cards:
-    card = all_cards[card_name]
+# for card_name in all_cards:
+#     card = all_cards[card_name]
+for card in m20_set["cards"]:
     if "Creature" in card["types"]:
         text = card["text"].replace("\n", " \\n ") if "text" in card else ""
         abilities = find_abilities(card["text"] if "text" in card else "")
         ability_string = xstr(abilities)
         print("{:03d} {:30s} {:30s} {}".format(i, card["name"], ability_string, text))
         i += 1
+
+print()
+print()
+print("Activated abilities.")
+
+i = 1
+for card in m20_set["cards"]:
+    if "Creature" in card["types"]:
+        text = card["text"] if "text" in card else ""
+        for line in text.split("\n"):
+            activation, ability = find_activated_ability(line)
+            if activation is not None:
+                print(
+                    "{:03d} {:30s} {:20s} {:180s} **** {}".format(
+                        i, card["name"], activation, ability, line
+                    )
+                )
+                i += 1
