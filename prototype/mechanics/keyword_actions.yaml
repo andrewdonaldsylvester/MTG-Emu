@@ -1,0 +1,178 @@
+#
+# https://media.wizards.com/images/magic/tcg/resources/rules/MagicCompRules_21031101.pdf
+#
+Keyword Actions:
+    Activate:
+        Rule: 701.2
+        Text:
+            701.2a: 'To activate an activated ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. A player may activate an ability if he or she has priority. See rule 602, “Activating Activated Abilities.”'
+    Attach:
+        Rule: 701.3
+        Text:
+            701.3a: 'To attach an Aura, Equipment, or Fortification to an object means to take it from where it currently is and put it onto that object. If something is attached to a permanent on the battlefield, it’s customary to place it so that it’s physically touching the permanent. An Aura, Equipment, or Fortification can’t be attached to an object it couldn’t enchant, equip, or fortify, respectively.'
+            701.3b: 'If an effect tries to attach an Aura, Equipment, or Fortification to an object it can’t be attached to, the Aura, Equipment, or Fortification doesn’t move. If an effect tries to attach an Aura, Equipment, or Fortification to the object it’s already attached to, the effect does nothing. If an effect tries to attach an object that isn’t an Aura, Equipment, or Fortification to another object or player, the effect does nothing and the first object doesn’t move.'
+            701.3c: 'Attaching an Aura, Equipment, or Fortification on the battlefield to a different object causes the Aura, Equipment, or Fortification to receive a new timestamp.'
+            701.3d: 'To “unattach” an Equipment from a creature means to move it away from that creature so the Equipment is on the battlefield but is not equipping anything. It should no longer be physically touching any creature. If an Aura, Equipment, or Fortification that was attached to something ceases to be attached to it, that counts as “becoming unattached”; this includes if that object and/or that Aura, Equipment, or Fortification leaves the battlefield.'
+    Cast:
+        Rule: 701.4
+        Text:
+            701.4a: 'To cast a spell is to take it from the zone it’s in (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. A player may cast a spell if he or she has priority. See rule 601, “Casting Spells.”'
+            701.4b: 'To cast a card is to cast it as a spell.'
+    Counter:
+        Rule: 701.5
+        Text:
+            701.5a: 'To counter a spell or ability means to cancel it, removing it from the stack. It doesn’t resolve and none of its effects occur. A countered spell is put into its owner’s graveyard.'
+            701.5b: 'The player who cast a countered spell or activated a countered ability doesn’t get a “refund” of any costs that were paid.'
+    Destroy:
+        Rule: 701.6
+        Text:
+            701.6a: 'To destroy a permanent, move it from the battlefield to its owner’s graveyard.'
+            701.6b: 'The only ways a permanent can be destroyed are as a result of an effect that uses the word “destroy” or as a result of the state-based actions that check for lethal damage (see rule 704.5g) or damage from a source with deathtouch (see rule 704.5h). If a permanent is put into its owner’s graveyard for any other reason, it hasn’t been “destroyed.”'
+            701.6c: 'A regeneration effect replaces a destruction event. See rule 701.12, “Regenerate.”'
+    Discard:
+        Rule: 701.7
+        Text:
+            701.7a: 'To discard a card, move it from its owner’s hand to that player’s graveyard.'
+            701.7b: 'By default, effects that cause a player to discard a card allow the affected player to choose which card to discard. Some effects, however, require a random discard or allow another player to choose which card is discarded.'
+            701.7c: 'If a card is discarded, but an effect causes it to be put into a hidden zone instead of into its owner’s graveyard without being revealed, all values of that card’s characteristics are considered to be undefined. If a card is discarded this way to pay a cost that specifies a characteristic about the discarded card, that cost payment is illegal; the game returns to the moment before the cost was paid (see rule 717, “Handling Illegal Actions”).'
+    Exchange:
+        Rule: 701.8
+        Text:
+            701.8a: 'A spell or ability may instruct players to exchange something (for example, life totals or control of two permanents) as part of its resolution. When such a spell or ability resolves, if the entire exchange can’t be completed, no part of the exchange occurs.'
+                Example:
+                    - 'If a spell attempts to exchange control of two target creatures but one of those creatures is destroyed before the spell resolves, the spell does nothing to the other creature.'
+            701.8b: 'When control of two permanents is exchanged, if those permanents are controlled by different players, each of those players simultaneously gains control of the permanent that was controlled by the other player. If, on the other hand, those permanents are controlled by the same player, the exchange effect does nothing.'
+            701.8c: 'When life totals are exchanged, each player gains or loses the amount of life necessary to equal the other player’s previous life total. Replacement effects may modify these gains and losses, and triggered abilities may trigger on them.'
+            701.8d: 'Some spells or abilities may instruct a player to exchange cards in one zone with cards in a different zone (for example, exiled cards and cards in a player’s hand). These spells and abilities work the same as other “exchange” spells and abilities, except they can exchange the cards only if all the cards are owned by the same player.'
+            701.8e: 'If a card in one zone is exchanged with a card in a different zone, and either of them is attached to an object, that card stops being attached to that object and the other card becomes attached to that object.'
+            701.8f: 'If a spell or ability instructs a player to simply exchange two zones, and one of the zones is empty, the cards in the zones are still exchanged.'
+            701.8g: 'A spell or ability may instruct a player to exchange two numerical values. In such an exchange, each value becomes equal to the previous value of the other. If either of those values is a life total, the affected player gains or loses the amount of life necessary to equal the other value. Replacement effects may modify this gain or loss, and triggered abilities may trigger on it. If either of those values is a power or toughness, a continuous effect is created setting that power or toughness to the other value (see rule 613.3b). This rule does not apply to spells and abilities that switch a creature’s power and toughness.'
+    Exile:
+        Rule: 701.9
+        Text:
+            701.9a: 'To exile an object, move it to the exile zone from wherever it is. See rule 406, “Exile.”'
+    Fight:
+        Rule: 701.10
+        Text:
+            701.10a: 'A spell or ability may instruct a creature to fight another creature or it may instruct two creatures to fight each other. Each of those creatures deals damage equal to its power to the other creature.'
+            701.10b: 'If a creature instructed to fight is no longer on the battlefield or is no longer a creature, no damage is dealt. If a creature is an illegal target for a resolving spell or ability that instructs it to fight, no damage is dealt.'
+            701.10c: 'If a creature fights itself, it deals damage equal to its power to itself twice.'
+            701.10d: 'The damage dealt when a creature fights isn’t combat damage.'
+    Play:
+        Rule: 701.11
+        Text:
+            701.11a: 'To play a land means to put it onto the battlefield from the zone it’s in (usually the hand). A player may play a land if he or she has priority, it’s the main phase of his or her turn, the stack is empty, and he or she hasn’t played a land this turn. Playing a land is a special action (see rule 115), so it doesn’t use the stack; it simply happens. Putting a land onto the battlefield as the result of a spell or ability isn’t the same as playing a land. See rule 305, “Lands.”'
+            701.11b: 'To play a card means to play that card as a land or to cast that card as a spell, whichever is appropriate.'
+            701.11c: 'Some effects instruct a player to “play” with a certain aspect of the game changed, such as “Play with the top card of your library revealed.” “Play” in this sense means to play the Magic game.'
+            701.11d: 'Previously, the action of casting a spell, or casting a card as a spell, was referred to on cards as “playing” that spell or that card. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “casting” that spell or that card.'
+            701.11e: 'Previously, the action of using an activated ability was referred to on cards as “playing” that ability. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “activating” that ability.'
+    Regenerate:
+        Rule: 701.12
+        Text:
+            701.12a: 'If the effect of a resolving spell or ability regenerates a permanent, it creates a replacement effect that protects the permanent the next time it would be destroyed this turn. In this case,'
+                Example:
+                    - '“Regenerate [permanent]” means “The next time [permanent] would be destroyed this turn, instead remove all damage marked on it and tap it. If it’s an attacking or blocking creature, remove it from combat.”'
+            701.12b: 'If the effect of a static ability regenerates a permanent, it replaces destruction with an alternate effect each time that permanent would be destroyed. In this case, “Regenerate [permanent]” means “Instead remove all damage marked on [permanent] and tap it. If it’s an attacking or blocking creature, remove it from combat.”'
+            701.12c: 'Neither activating an ability that creates a regeneration shield nor casting a spell that creates a regeneration shield is the same as regenerating a permanent. Effects that say that a permanent can’t be regenerated don’t prevent such abilities from being activated or such spells from being cast; rather, they prevent regeneration shields from having any effect.'
+    Reveal:
+        Rule: 701.13
+        Text:
+            701.13a: 'To reveal a card, show that card to all players for a brief time. If an effect causes a card to be revealed, it remains revealed for as long as necessary to complete the parts of the effect that card is relevant to. If the cost to cast a spell or activate an ability includes revealing a card, the card remains revealed from the time the spell or ability is announced until it the time it leaves the stack.'
+            701.13b: 'Revealing a card doesn’t cause it to leave the zone it’s in.'
+    Sacrifice:
+        Rule: 701.14
+        Text:
+            701.14a: 'To sacrifice a permanent, its controller moves it from the battlefield directly to its owner’s graveyard. A player can’t sacrifice something that isn’t a permanent, or something that’s a permanent he or she doesn’t control. Sacrificing a permanent doesn’t destroy it, so regeneration or other effects that replace destruction can’t affect this action.'
+    Search:
+        Rule: 701.15
+        Text:
+            701.15a: 'To search for a card in a zone, look at all cards in that zone (even if it’s a hidden zone) and find a card that matches the given description.'
+            701.15b: 'If a player is searching a hidden zone for cards with a stated quality, such as a card with a certain card type or color, that player isn’t required to find some or all of those cards even if they’re present in that zone.'
+                Example:
+                    - 'Splinter says “Exile target artifact. Search its controller’s graveyard, hand, and library for all cards with the same name as that artifact and exile them. That player then shuffles his or her library.” A player casts Splinter targeting Howling Mine (an artifact). Howling Mine’s controller has another Howling Mine in her graveyard and two more in her library. Splinter’s controller must find the Howling Mine in the graveyard, but may choose to find zero, one, or two of the Howling Mines in the library.'
+            701.15c: 'If a player is instructed to search a hidden zone for cards that match an undefined quality, that player may still search that zone but can’t find any cards.'
+                Example:
+                    - 'Lobotomy says “Target player reveals his or her hand, then you choose a card other than a basic land card from it. Search that player’s graveyard, hand, and library for all cards with the same name as the chosen card and exile them. Then that player shuffles his or her library.” If the target player has no cards in his or her hand when Lobotomy resolves, the player who cast Lobotomy searches the specified zones but doesn’t exile any cards.'
+            701.15d: 'If a player is searching a hidden zone simply for a quantity of cards, such as “a card” or “three cards,” that player must find that many cards (or as many as possible, if the zone doesn’t contain enough cards).'
+            701.15e: 'If the effect that contains the search instruction doesn’t also contain instructions to reveal the found card(s), then they’re not revealed.'
+            701.15f: 'If searching a zone is replaced with searching a portion of that zone, any other instructions that refer to searching the zone still apply.'
+            Example: Aven Mindcensor says, in part, “If an opponent would search a library, that player searches the top four cards of that library instead.” Veteran Explorer says “When Veteran Explorer dies, each player may search his or her library for up to two basic land cards and put them onto the battlefield. Then each player who searched his or her library this way shuffles it.” An opponent who searched the top four cards of his or her library because of Veteran Explorer’s ability would shuffle the entire library.
+    Shuffle:
+        Rule: 701.16
+        Text:
+            701.16a: 'To shuffle a library or a face-down pile of cards, randomize the cards within it so that no player knows their order.'
+            701.16b: 'Some effects cause a player to search a library for a card or cards, shuffle that library, then put the found card or cards in a certain position in that library. Even though the found card or cards never leave that library, they aren’t included in the shuffle. Rather, all the cards in that library except those are shuffled. Abilities that trigger when a library is shuffled will still trigger.'
+            701.16c: 'If an effect would cause a player to shuffle one or more specific objects into a library, but none of those objects are in the zone they’re expected to be in, that library isn’t shuffled.'
+                Example: Guile says, in part, “When Guile is put into a graveyard from anywhere, shuffle it into its owner’s library.” It’s put into a graveyard and its ability triggers, then a player exiles it from that graveyard in response. When the ability resolves, nothing happens.
+            701.16d: 'If an effect would cause a player to shuffle one or more specific objects into a library, and a replacement or prevention effect causes all such objects to be moved to another zone instead, that library isn’t shuffled.'
+                Example: Black Sun’s Zenith says, in part, “Shuffle Black Sun’s Zenith into its owner’s library.” Black Sun’s Zenith is in a graveyard, has gained flashback (due to Recoup, perhaps), and is cast from that graveyard. Black Sun’s Zenith will be exiled, and its owner’s library won’t be shuffled.
+            701.16e: 'If an effect would cause a player to shuffle a set of objects into a library, that library is shuffled even if there are no objects in that set.'
+                Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, target player shuffles any number of target cards from his or her graveyard into his or her library.” It enters the battlefield, its ability triggers, and no cards are targeted. When the ability resolves, the targeted player will still have to shuffle his or her library.
+            701.16f: 'If an effect causes a player to shuffle a library containing zero or one cards, abilities that trigger when a library is shuffled will still trigger.'
+            701.16g: 'If two or more effects cause a library to be shuffled multiple times simultaneously, abilities that trigger when that library is shuffled will trigger that many times.'
+    Tap:
+        Rule: 701.17a
+        Text:
+            701.17a: 'To tap a permanent, turn it sideways from an upright position. Only untapped permanents can be tapped.'
+    Untap:
+        Rule: 701.17b
+        Text:
+            701.17b: 'To untap a permanent, rotate it back to the upright position from a sideways position. Only tapped permanents can be untapped.'
+    Scry:
+        Rule: 701.18
+        Text:
+            701.18a: 'To “scry N” means to look at the top N cards of your library, put any number of them on the bottom of your library in any order, and put the rest on top of your library in any order.'
+    Fateseal:
+        Rule: 701.19
+        Text:
+            701.19a: 'To “fateseal N” means to look at the top N cards of an opponent’s library, put any number of them on the bottom of that library in any order, and put the rest on top of that library in any order.'
+    Clash:
+        Rule: 701.20
+        Text:
+            701.20a: 'To clash, a player reveals the top card of his or her library. That player may then put that card on the bottom of his or her library.'
+            701.20b: '“Clash with an opponent” means “Choose an opponent. You and that opponent each clash.”'
+            701.20c: 'A player wins a clash if that player revealed a card with a higher converted mana cost than all other cards revealed in that clash.'
+    Planeswalk:
+        Rule: 701.21
+        Text:
+            701.21a: 'A player may planeswalk only during a Planechase game. Only the planar controller may planeswalk. See rule 901, “Planechase.”'
+            701.21b: 'To planeswalk is to put each face-up plane card and phenomenon card on the bottom of its owner’s planar deck face down, then move the top card of your planar deck off that planar deck and turn it face up.'
+            701.21c: 'A player may planeswalk as the result of the “planeswalking ability” (see rule 901.8), because the owner of a face-up plane card or phenomenon card leaves the game (see rule 901.10), or because a phenomenon’s triggered ability leaves the stack (see rule 704.5x). Abilities may also instruct a player to planeswalk.'
+            701.21d: 'The plane card that’s turned face up is the plane the player planeswalks to. The plane card that’s turned face down or that leaves the game is the plane the player planeswalks away from. The same is true with respect to phenomena.'
+    Set in Motion:
+        Rule: 701.22
+        Text:
+            701.22a: 'Only a scheme card may be set in motion, and only during an Archenemy game. Only the archenemy may set a scheme card in motion. See rule 312, “Schemes,” and rule 904, “Archenemy.”'
+            701.22b: 'To set a scheme in motion, move it off the top of your scheme deck and turn it face up.'
+    Abandon:
+        Rule: 701.23
+        Text:
+            701.23a: 'Only a face-up ongoing scheme card may be abandoned, and only during an Archenemy game. See rule 312, “Schemes,” and rule 904, “Archenemy.”'
+            701.23b: 'To abandon a scheme, turn it face down and put it on the bottom of its owner’s scheme deck.'
+    Proliferate:
+        Rule: 701.24
+        Text:
+            701.24a: 'To proliferate means to choose any number of permanents and/or players that have a counter, then give each exactly one additional counter of a kind that permanent or player already has.'
+            701.24b: 'If a permanent or player chosen this way has more than one kind of counter, the player who is proliferating chooses which kind of counter to add.'
+            701.24c: 'To proliferate in a Two-Headed Giant game means to choose any number of permanents and/or teams that have a counter, then give each exactly one additional counter of a kind that permanent or team already has. See rule 810, “Two-Headed Giant Variant.”'
+    Transform:
+        Rule: 701.25
+        Text:
+            701.25a: 'Only permanents represented by double-faced cards can transform. (See rule 711, “Double-Faced Cards.”) If a spell or ability instructs a player to transform any permanent that isn’t represented by a double-faced card, nothing happens.'
+            701.25b: 'To transform a permanent, turn it over so that its other face is up.'
+            701.25c: 'Although transforming a permanent uses the same physical action as turning a permanent face up or face down, they are different game actions. Abilities that trigger when a permanent is turned face down won’t trigger when that permanent transforms, and so on.'
+            701.25d: 'Some triggered abilities trigger when an object “transforms into” an object identified by name. Such an ability triggers only if that object didn’t have the specified name immediately before the transform instruction and does have the specified name immediately after the transform instruction.'
+    Detain:
+        Rule: 701.26
+        Text:
+            701.26a: 'Certain spells and abilities can detain a permanent. Until the next turn of the controller of that spell or ability, that permanent can’t attack or block and its activated abilities can’t be activated.'
+    Populate:
+        Rule: 701.27
+        Text:
+            701.27a: 'To populate means to choose a creature token you control and put a token onto the battlefield that’s a copy of that creature token.'
+            701.27b: 'If you control no creature tokens when instructed to populate, you won’t put a token onto the battlefield.'
+    Monstrosity:
+        Rule: 701.28
+        Text:
+            701.28a: '“Monstrosity N” means “If this permanent isn’t monstrous, put N +1/+1 counters on it and it becomes monstrous.” Monstrous is a condition of that permanent that can be referred to by other abilities.'
+            701.28b: 'If a permanent’s ability instructs a player to “monstrosity X,” other abilities of that permanent may also refer to X. The value of X in those abilities is equal to the value of X as that permanent became monstrous.'
